@@ -34,7 +34,7 @@ The pipeline is designed to be repeatable and idempotent.
 ---
 
 ## Project Structure
-Note that, before the data ingestion, I created a resource group for this project and created the following resources:
+Note that, before the data ingestion, I created a resource group in azure for this project and created the following resources:
 -storage account, in which i created the bronze and silver containere
 -sql server
 -sql database which is my landing place for the transformed data
