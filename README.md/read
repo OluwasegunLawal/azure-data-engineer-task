@@ -1,0 +1,81 @@
+# Azure Data Engineer Task for Sumitomo Corporation
+
+## Overview
+
+This project demonstrates an end-to-end data engineering pipeline using Python and Azure SQL.
+It covers ingestion, transformation, storage, and orchestration, following real-world data engineering practices.
+
+The pipeline ingests product data from a public API, cleans and enriches it, and loads it into an Azure SQL database.
+This project implements an end-to-end data engineering pipeline that:
+1. Fetches product data from an external API  
+2. Transforms and cleans the data
+3. Loads curated data into Azure SQL Database
+
+The pipeline is designed to be repeatable and idempotent.
+
+---
+
+## Architecture
+**Extract → Transform → Load (ETL)**
+
+- **Extract**: Python script pulls raw JSON from FakeStore API
+- **Transform**: Cleans, enriches, and normalizes product data
+- **Load**: Inserts data into Azure SQL Database using `MERGE`
+
+---
+
+## Tech Stack
+- Python 3
+- Azure SQL Database
+- pyodbc
+- REST API
+- Git / GitHub
+
+---
+
+## Project Structure
+Note that, before the data ingestion, I created a resource group for this project and created the following resources:
+-storage account, in which i created the bronze and silver containere
+-sql server
+-sql database which is my landing place for the transformed data
+
+
+Pipeline Steps--more breakdown
+1. Ingest (raw/bromze)
+
+Fetches product data from FakeStore API
+
+Saves raw JSON files locally with timestamps (fetch_data.py)
+
+2. Transform (processed/silver)
+
+Cleans and normalizes data
+
+Converts prices from USD to GBP
+
+Adds metadata (processed timestamp, source file)    all these can be found in the transform_data.py script in my repo
+
+3. Load
+
+Loads data into Azure SQL   (you can find this in my load_to_sql.py script)
+
+Uses idempotent logic (MERGE)
+
+Creates table automatically if not present
+
+4. Orchestrate    (python code found in run_pipeline.py)
+
+Pipeline order: fetch → transform → load
+
+Orchestration implemented using:
+
+run_pipeline.py (local simulation)
+
+Airflow DAG: Airflow DAG is provided for production orchestration; run_pipeline.py simulates daily execution locally (product_pipeline_dag.py)
+
+
+
+Author
+
+Oluwasegun
+Data Engineer | Azure | Python | SQL

@@ -1,0 +1,27 @@
+-- 1. Total records loaded
+SELECT COUNT(*) AS total_products
+FROM dbo.products;
+
+-- 2. Check sample data
+SELECT TOP 10 *
+FROM dbo.products
+ORDER BY ingestion_timestamp DESC;
+
+-- 3. Validate GBP conversion
+SELECT
+    price_usd,
+    price_gbp
+FROM dbo.products
+WHERE price_gbp IS NOT NULL;
+
+-- 4. Check for duplicate product IDs
+SELECT id, COUNT(*) AS cnt
+FROM dbo.products
+GROUP BY id
+HAVING COUNT(*) > 1;
+
+-- 5. Latest ingestion timestamp
+SELECT MAX(ingestion_timestamp) AS latest_load
+FROM dbo.products;
+
+#all these are run in the azure query editor in my azure database

@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+
+# Data (do NOT commit data)
+data/raw-data/
+data/processed-data/
+
+# VS Code
+.vscode/
+
+# Airflow
+logs/

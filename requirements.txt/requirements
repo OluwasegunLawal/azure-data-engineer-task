@@ -1,0 +1,25 @@
+Requirements
+1. Ingest
+• Use Python to extract data from a public API.
+• Save raw data into a local or cloud-based data lake format (e.g., Parquet or JSON).
+• Example Public APIs for Ingestion (You are free to use any suitable public API. Choice is
+not restricted to these below)
+o Fake Store API – Product listings for ecommerce-style data
+https://fakestoreapi.com/docs
+o CoinGecko API – Cryptocurrency market data
+https://www.coingecko.com/en/api/documentation
+
+2. Transform
+• Clean and normalize the data (e.g., convert prices to GBP using exchange rates from a
+public API).
+• Add a new column (e.g., price in GBP).
+• Perform basic feature engineering (e.g., categorize product types or flag items priced
+over a threshold).
+3. Store
+• Load the cleaned data into a SQL-based database (e.g., SQLite, PostgreSQL, or AWS
+RDS/Azure SQL).
+• Structure the schema appropriately (normalized where necessary).
+4. Orchestrate
+• Use Airflow or any scheduling tool to define a basic DAG with:
+o fetch_data → transform_data → load_to_db tasks.
+• Simulate daily runs (no need to actually schedule daily).
