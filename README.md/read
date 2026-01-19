@@ -73,6 +73,24 @@ run_pipeline.py (local simulation)
 
 Airflow DAG: Airflow DAG is provided for production orchestration; run_pipeline.py simulates daily execution locally (product_pipeline_dag.py)
 
+Images-Screenshots
+## Architecture Diagram
+
+![End-to-End Azure Data Pipeline Architecture](images/architecture_diagram.png)
+## Azure SQL Validation
+
+The following screenshots demonstrate successful data loading and querying in Azure SQL Database.
+
+### Products Table Query
+![Azure SQL Products Query](images/azure_query_products.png)
+
+### Row Count Validation
+![Azure SQL Row Count](images/azure_query_row_count.png)
+
+### Azure Resource Group
+![Azure Resource Group](images/azure_resource_group.png)
+
+
 
 
 Author
